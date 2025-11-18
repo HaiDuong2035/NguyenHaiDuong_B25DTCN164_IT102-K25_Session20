@@ -10,8 +10,7 @@ typedef struct {
 } Dish;
 void printMenu(Dish menu[], int size) {
     for (int i = 0; i < size; i++) {
-        printf("%d. ID: %d - Name: %s - Price: %.2f\n",
-               i, menu[i].id, menu[i].name, menu[i].price);
+        printf("%d. ID: %d - Name: %s - Price: %.2f\n",i, menu[i].id, menu[i].name, menu[i].price);
     }
 }
 void insertDish(Dish menu[], int *size) {
@@ -20,7 +19,7 @@ void insertDish(Dish menu[], int *size) {
     printf("Nhap vi tri can chen (0 - %d): ", *size);
     scanf("%d", &pos);
     if (pos < 0 || pos > *size) {
-        printf("Vi tri khong hop le!\n");
+        printf("Vi tri khong hop le\n");
         return;
     }
     printf("Nhap ID: ");
@@ -34,14 +33,14 @@ void insertDish(Dish menu[], int *size) {
     }
     menu[pos] = newDish;
     (*size)++;
-    printf("Them mon thanh cong!\n");
+    printf("Them mon thanh cong\n");
 }
 void editDish(Dish menu[], int size) {
     int pos;
     printf("Nhap vi tri can sua (0 - %d): ", size - 1);
     scanf("%d", &pos);
     if (pos < 0 || pos >= size) {
-        printf("Vi tri khong hop le!\n");
+        printf("Vi tri khong hop le\n");
         return;
     }
     printf("Nhap ID moi: ");
@@ -50,21 +49,21 @@ void editDish(Dish menu[], int size) {
     scanf(" %[^\n]", menu[pos].name);
     printf("Nhap gia moi: ");
     scanf("%f", &menu[pos].price);
-    printf("Sua thanh cong!\n");
+    printf("Sua thanh cong\n");
 }
 void deleteDish(Dish menu[], int *size) {
     int pos;
-    printf("Nhap vi tri can xoa (0 - %d): ", *size - 1);
+    printf("Nhap vi tri can xoa: ", *size - 1);
     scanf("%d", &pos);
     if (pos < 0 || pos >= *size) {
-        printf("Vi tri khong hop le!\n");
+        printf("Vi tri khong hop le\n");
         return;
     }
     for (int i = pos; i < *size - 1; i++) {
         menu[i] = menu[i + 1];
     }
     (*size)--;
-    printf("Xoa thanh cong!\n");
+    printf("Xoa thanh cong\n");
 }
 void sortAscending(Dish menu[], int size) {
     for (int i = 0; i < size - 1; i++) {
@@ -76,7 +75,7 @@ void sortAscending(Dish menu[], int size) {
             }
         }
     }
-    printf("Sap xep tang dan thanh cong!\n");
+    printf("Sap xep tang dan thanh cong\n");
 }
 void sortDescending(Dish menu[], int size) {
     for (int i = 0; i < size - 1; i++) {
@@ -88,7 +87,7 @@ void sortDescending(Dish menu[], int size) {
             }
         }
     }
-    printf("Sap xep giam dan thanh cong!\n");
+    printf("Sap xep giam dan thanh cong\n");
 }
 void linearSearch(Dish menu[], int size) {
     char key[50];
@@ -97,13 +96,12 @@ void linearSearch(Dish menu[], int size) {
     int found = 0;
     for (int i = 0; i < size; i++) {
         if (strcmp(menu[i].name, key) == 0) {
-            printf("Tim thay tai vi tri %d: ID=%d, Name=%s, Price=%.2f\n",
-                   i, menu[i].id, menu[i].name, menu[i].price);
+            printf("Tim thay tai vi tri %d: ID=%d, Name=%s, Price=%.2f\n",i, menu[i].id, menu[i].name, menu[i].price);
             found = 1;
         }
     }
     if (!found) {
-        printf("Khong tim thay mon an!\n");
+        printf("Khong tim thay mon an\n");
     }
 }
 void binarySearch(Dish menu[], int size) {
@@ -115,8 +113,7 @@ void binarySearch(Dish menu[], int size) {
         int mid = (left + right) / 2;
         int cmp = strcmp(menu[mid].name, key);
         if (cmp == 0) {
-            printf("Tim thay tai vi tri %d: ID=%d, Name=%s, Price=%.2f\n",
-                   mid, menu[mid].id, menu[mid].name, menu[mid].price);
+            printf("Tim thay tai vi tri %d: ID=%d, Name=%s, Price=%.2f\n",mid, menu[mid].id, menu[mid].name, menu[mid].price);
             return;
         } else if (cmp < 0) {
             left = mid + 1;
@@ -124,7 +121,7 @@ void binarySearch(Dish menu[], int size) {
             right = mid - 1;
         }
     }
-    printf("Khong tim thay mon!\n");
+    printf("Khong tim thay mon\n");
 }
 int main() {
     Dish menu[100] = {
@@ -179,7 +176,6 @@ int main() {
             scanf(" %c", &opt);
             if (opt == 'a') linearSearch(menu, size);
             else if (opt == 'b') {
-                printf("? Lýu ?: Nh? phân yêu c?u danh sách S?P X?P THEO NAME!\n");
                 binarySearch(menu, size);
             }
             else printf("Lua chon khong hop le!\n");
